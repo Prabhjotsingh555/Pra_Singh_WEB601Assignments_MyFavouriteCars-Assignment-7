@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
     const idOfContentItemToLoad = 1;
     this.carservice
       .getContentItemById(idOfContentItemToLoad)
-      .subscribe((data) => {
+      .subscribe((data: any) => {
         this.singleContentItem = data;
         console.log(`Content Item at id: ${idOfContentItemToLoad}`);
       });
