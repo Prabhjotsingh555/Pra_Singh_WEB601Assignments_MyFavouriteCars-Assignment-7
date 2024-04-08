@@ -1,16 +1,20 @@
 <div class="content-card">
+    <mat-card>
+        <img mat-card-image *ngIf="content.imgURL; else defaultImg" src="{{content.imgURL}}" alt="{{content.title}}"
+            class="imgs" (click)="onCardClick(content)">
+        <ng-template #defaultImg>
+            <img mat-card-image
+                src="https://images.ctfassets.net/hrltx12pl8hq/7JnR6tVVwDyUM8Cbci3GtJ/bf74366cff2ba271471725d0b0ef418c/shutterstock_376532611-og.jpg"
+                alt="Default Image" class="imgs" (click)="onCardClick(content)">
+        </ng-template>
 
-    <img *ngIf="content.imgURL; else defaultImg" src="{{content.imgURL}}" alt="{{content.title}}" class="imgs"
-        (click)="onCardClick(content)">
-    <ng-template #defaultImg>
-        <img src="https://images.ctfassets.net/hrltx12pl8hq/7JnR6tVVwDyUM8Cbci3GtJ/bf74366cff2ba271471725d0b0ef418c/shutterstock_376532611-og.jpg" alt="Default Image" class="imgs" (click)="onCardClick(content)">
-    </ng-template>
-    <h3 style="text-align: center;">{{content.title}}</h3>
-    <p><strong>Description: </strong>{{content.description}}</p>
-    <p><strong>Creator: </strong>{{content.creator}}</p>
-    <p appHoverAffect [hoverStyle]="'textDecoration'"><strong>Type: </strong> {{content.type}}</p>
-    <strong>Tags:</strong>
-    <ul appHoverAffect [hoverStyle]="'fontWeight'" *ngFor="let tag of content.tags">
-        <li>{{tag}}</li>
-    </ul>
+        <mat-card-header>
+            <mat-card-title>{{ content.title }}</mat-card-title>
+            <mat-card-subtitle>{{ content.creator }}</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+            <a [routerLink]="['/content', content.id]" routerLinkActive="active">View Details</a>
+        </mat-card-content>
+    </mat-card>
 </div>

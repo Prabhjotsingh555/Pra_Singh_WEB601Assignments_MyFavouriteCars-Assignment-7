@@ -4,21 +4,22 @@
     <div *ngIf="content">
         <img *ngIf="content.imgURL; else defaultImg" src="{{content.imgURL}}" alt="{{content.title}}" class="imgs">
         <ng-template #defaultImg>
-            <img src="https://thumbs.dreamstime.com/b/environment-earth-day-hands-trees-growing-seedlings-bokeh-green-background-female-hand-holding-tree-nature-field-gra-130247647.jpg" alt="Default Image" class="imgs">
+            <img src="https://images.ctfassets.net/hrltx12pl8hq/7JnR6tVVwDyUM8Cbci3GtJ/bf74366cff2ba271471725d0b0ef418c/shutterstock_376532611-og.jpg"
+                alt="Default Image" class="imgs">
         </ng-template>
-    <p><strong>ID:</strong> {{ content.id }}</p>
-    <p><strong>Title:</strong> {{ content.title }}</p>
-    <p><strong>Description:</strong> {{ content.description }}</p>
-    <p><strong>Creator:</strong> {{ content.creator }}</p>
-    <p><strong>Type:</strong> {{ content.type }}</p>
-    <p><strong>Tags:</strong></p>
-    <ul appHoverAffect *ngFor="let tag of content.tags">
-        <li>{{tag}}</li>
-    </ul>
+        <p><strong>ID:</strong> {{ content.id }}</p>
+        <p><strong>Title:</strong> {{ content.title }}</p>
+        <p><strong>Description:</strong> {{ content.description }}</p>
+        <p><strong>Creator:</strong> {{ content.creator }}</p>
+        <p><strong>Type:</strong> {{ content.type }}</p>
+        <p><strong>Tags:</strong></p>
+        <ul appHoverAffect *ngFor="let tag of content.tags">
+            <li>{{tag}}</li>
+        </ul>
     </div>
 
     <div *ngIf="!content">
-    <p>Content not found.</p>
+        <p>Content not found.</p>
     </div>
 
     <button mat-raised-button color="primary" [routerLink]="['/list']">Go back to list</button>
