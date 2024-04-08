@@ -29,7 +29,7 @@ export class ModifyContentComponent {
   @Output() contentAdded = new EventEmitter<Content>();
 
   constructor(
-    private natureService: carserviceService,
+    private CarService: carserviceService,
     public dialog: MatDialog
   ) {}
 
@@ -40,13 +40,12 @@ export class ModifyContentComponent {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.natureService
-          .addContent(this.newContent)
-          .subscribe((newContentWithId: Content | undefined) => {
+        this.CarService.addContent(this.newContent).subscribe(
+          (newContentWithId: Content | undefined) => {
             this.contentAdded.emit(newContentWithId);
-          });
+          }
+        );
       }
     });
   }
-
 }

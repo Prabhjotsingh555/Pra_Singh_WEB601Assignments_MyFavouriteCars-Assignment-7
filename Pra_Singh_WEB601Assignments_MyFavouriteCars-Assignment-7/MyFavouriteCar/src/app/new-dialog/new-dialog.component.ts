@@ -28,7 +28,7 @@ export class NewDialogComponent {
   @Output() contentAdded = new EventEmitter<Content>();
 
   constructor(
-    private natureService: carserviceService,
+    private CarService: carserviceService,
     public dialogRef: MatDialogRef<NewDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
@@ -40,11 +40,11 @@ export class NewDialogComponent {
   onAddClick(): void {
     this.newContent.tags = this.tagsString.split(',');
 
-    this.natureService
-      .addContent(this.newContent)
-      .subscribe((newContentWithId: Content | undefined) => {
+    this.CarService.addContent(this.newContent).subscribe(
+      (newContentWithId: Content | undefined) => {
         this.contentAdded.emit(newContentWithId);
-      });
+      }
+    );
     this.dialogRef.close();
     this.clearFields();
   }

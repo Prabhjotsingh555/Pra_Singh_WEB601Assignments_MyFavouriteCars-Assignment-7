@@ -16,7 +16,7 @@ export class ContentDetailComponent {
   id!: number;
   content!: Content;
   constructor(
-    private natureService: carserviceService,
+    private CarService: carserviceService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
@@ -24,7 +24,7 @@ export class ContentDetailComponent {
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: { get: (arg0: string) => any }) => {
       this.id = +(params.get('id') ?? 0);
-      this.natureService.getContentItemById(this.id).subscribe((c: Content) => {
+      this.CarService.getContentItemById(this.id).subscribe((c: Content) => {
         this.content = c;
       });
     });
